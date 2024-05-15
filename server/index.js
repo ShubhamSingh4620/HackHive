@@ -12,8 +12,10 @@ async function connectToMongo() {
     await client.connect();
     console.log("Connected to MongoDB");
   } catch (err) {
-    console.error("Error connecting to MongoDB:", err);
-  }
+    console.error("Error fetching hackathons:", err.message);
+    res.status(500).json({ error: "Internal server error" });
+}
+
 }
 connectToMongo();
 
